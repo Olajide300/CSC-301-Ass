@@ -1,0 +1,153 @@
+QUESTIONS:
+1.) Using a recursion, get a sum of first ten numbers.
+2.) Write a Fibonacci series of 8 
+3.) Dynamic Array: 
+	Insert the following values into a dynamic arrays of capacity 2 
+	values  = 10, 20, 30, 40, 50.
+4.) Linear and Binar Search: 
+ 	Perform a linear search on an array with; 
+	Values = 2, 5, 7, 10, 14, 20.	Target is 10.
+5.) Binary Search.
+	Place the binary search in 1, 3, 5, 7, 9, 11, 13. Target is 9
+-- State the time & space complexit of both.
+
+ANSWER:
+1. Here’s how to get the sum of the first ten natural numbers (1–10) using recursion.
+	function sum(n):
+    if n == 1:
+        return 1
+    else:
+        return n + sum(n - 1)
+	sum(10)
+# Output: 55
+
+2. Here is the Fibonacci series of the first 8 terms;
+	Fibonacci Series (8 terms): 0, 1, 1, 2, 3, 5, 8, 13
+	
+	# Fibonacci series of 8 terms
+n = 8
+a, b = 0, 1
+
+print("Fibonacci Series:")
+
+for i in range(n):
+    print(a, end=" ")
+    a, b = b, a + b
+
+
+3. Inserting 10, 20, 30, 40, 50 into an initial array of capacity = 2.
+
+A dynamic array automatically doubles its capacity when it becomes full.
+	✅ Initial State
+	Capacity = 2
+	Size = 0
+	Array = [  ,  ]
+
+	👉 Insert 10
+	Fits in current capacity
+	Array → [10, _ ]
+	Size = 1
+
+	👉 Insert 20
+	Still fits
+  	Array → [10, 20]
+ 	 Size = 2
+
+	👉 Insert 30
+	Array is full → capacity doubles to 4
+	New array created → [10, 20, _ , _ ]
+	Insert 30
+	Array → [10, 20, 30, _ ]
+	Size = 3
+
+	👉 Insert 40
+	Fits in capacity 4
+ 	 Array → [10, 20, 30, 40]
+  	Size = 4
+
+	👉 Insert 50
+	 Array full → capacity doubles to 8
+  	New array → [10, 20, 30, 40, _ , _ , _ , _ ]
+  	Insert 50
+  	Array → [10, 20, 30, 40, 50, _ , _ , _ ]
+  	Size = 5
+
+	✅ Final Dynamic Array
+	[10, 20, 30, 40, 50, _, _, _]
+
+Final size: 5
+Final capacity: 8
+
+4. Linear Search
+	Array: `[2, 5, 7, 10, 14, 20]`
+	Target: `10`
+Linear search checks each element one-by-one from the start until it finds the target.
+
+🔍Step-by-Step Search
+| Index | Value | Comparison  | Result    |
+| ----- | -----        | -----------        | --------- |
+| 0     | 2             | 2 == 10? ❌  | Continue  |
+| 1     | 5             | 5 == 10? ❌  | Continue  |
+| 2     | 7             | 7 == 10? ❌  | Continue  |
+| 3     | 10          | 10 == 10? ✅ | FOUND |
+
+Conclusion: The target 10 was found at index 3 (4th position in the array).
+
+5. Below is the Binary Search performed on the array:
+
+ 🔍 Binary Search
+Array (sorted): [1, 3, 5, 7, 9, 11, 13]
+Target: 9
+
+
+# 🐍 Python Code for Binary Search
+
+```python
+# Binary Search in Python
+
+values = [1, 3, 5, 7, 9, 11, 13]
+target = 9
+
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1   # target not found
+
+# Run the search
+index = binary_search(values, target)
+
+if index != -1:
+    print(f"Target {target} found at index {index}.")
+else:
+    print("Target not found.")
+
+
+Time & Space Complexity
+
+Linear Search
+	Time Complexity: O(n)
+  (Worst case: check every element)
+	Space Complexity: O(1)
+  (No extra memory used)
+
+Binary Search
+ 	Time Complexity: O(log n)
+  (Each step divides the array by 2)
+	Space Complexity:
+  Iterative version: O(1)
+  Recursive version: O(log n) [because of call stack]
+
+
+
+
